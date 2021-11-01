@@ -4,11 +4,11 @@
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
     
         <persistence-unit name="persistenceUnit1" transaction-type="JTA">
-        <jta-data-source>java:jboss/datasources/postgresDS</jta-data-source>
+        <!-- <jta-data-source>java:jboss/datasources/CoreDS</jta-data-source> -->
         
         <properties>
         	<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> <!-- DB Driver -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/postgres" /> <!-- DB Mane -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/postgres" /> <!-- DB Name -->
             <property name="javax.persistence.jdbc.user" value="postgres" /> <!-- DB User -->
             <property name="javax.persistence.jdbc.password" value="postgres" /> <!-- DB Password -->
 

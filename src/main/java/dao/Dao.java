@@ -1,7 +1,6 @@
 package dao;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.ejb.Local;
 
