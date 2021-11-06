@@ -35,9 +35,11 @@ public class Padrone implements Serializable{
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	@Column(name = "nome")
 	private String nome;
 	

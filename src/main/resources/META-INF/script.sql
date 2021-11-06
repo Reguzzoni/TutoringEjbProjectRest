@@ -1,10 +1,10 @@
--- Table: my_ejb_project_rest.padrone
+-- Table: public.padrone
 
--- DROP TABLE my_ejb_project_rest.padrone;
+-- DROP TABLE public.padrone;
 
-CREATE SCHEMA my_ejb_project_rest;
+CREATE SCHEMA public;
 
-CREATE TABLE IF NOT EXISTS my_ejb_project_rest.padrone
+CREATE TABLE IF NOT EXISTS public.padrone
 (
     padrone_id integer NOT NULL,
     nome character varying(50) COLLATE pg_catalog."default" NOT NULL,
@@ -14,13 +14,13 @@ CREATE TABLE IF NOT EXISTS my_ejb_project_rest.padrone
 
 TABLESPACE pg_default;
 
-ALTER TABLE my_ejb_project_rest.padrone
+ALTER TABLE public.padrone
     OWNER to postgres;
--- Table: my_ejb_project_rest.gatto
+-- Table: public.gatto
 
--- DROP TABLE my_ejb_project_rest.gatto;
+-- DROP TABLE public.gatto;
 
-CREATE TABLE IF NOT EXISTS my_ejb_project_rest.gatto
+CREATE TABLE IF NOT EXISTS public.gatto
 (
     gatto_id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     nome character varying(50) COLLATE pg_catalog."default" NOT NULL,
@@ -30,13 +30,13 @@ CREATE TABLE IF NOT EXISTS my_ejb_project_rest.gatto
 
 TABLESPACE pg_default;
 
-ALTER TABLE my_ejb_project_rest.gatto
+ALTER TABLE public.gatto
     OWNER to postgres;
--- Table: my_ejb_project_rest.cane
+-- Table: public.cane
 
--- DROP TABLE my_ejb_project_rest.cane;
+-- DROP TABLE public.cane;
 
-CREATE TABLE IF NOT EXISTS my_ejb_project_rest.cane
+CREATE TABLE IF NOT EXISTS public.cane
 (
     cane_id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     nome character varying(50) COLLATE pg_catalog."default" NOT NULL,
@@ -47,39 +47,39 @@ CREATE TABLE IF NOT EXISTS my_ejb_project_rest.cane
 
 TABLESPACE pg_default;
 
-ALTER TABLE my_ejb_project_rest.cane
+ALTER TABLE public.cane
     OWNER to postgres;
 
 
 
 --sequences
--- SEQUENCE: my_ejb_project_rest.padrone_sequence
+-- SEQUENCE: public.padrone_sequence
 
--- DROP SEQUENCE my_ejb_project_rest.padrone_sequence;
+-- DROP SEQUENCE public.padrone_sequence;
 
-CREATE SEQUENCE my_ejb_project_rest.padrone_sequence
+CREATE SEQUENCE public.padrone_sequence
     INCREMENT 1
     START 10
     MINVALUE 1
     MAXVALUE 9223372036854775807
     CACHE 1;
 
-ALTER SEQUENCE my_ejb_project_rest.padrone_sequence
+ALTER SEQUENCE public.padrone_sequence
     OWNER TO postgres;
 
 
 
 
--- SEQUENCE: my_ejb_project_rest.cane_sequence
+-- SEQUENCE: public.cane_sequence
 
--- DROP SEQUENCE my_ejb_project_rest.cane_sequence;
+-- DROP SEQUENCE public.cane_sequence;
 
-CREATE SEQUENCE my_ejb_project_rest.cane_sequence
+CREATE SEQUENCE public.cane_sequence
     INCREMENT 1
     START 1
     MINVALUE 1
     MAXVALUE 9223372036854775807
     CACHE 1;
 
-ALTER SEQUENCE my_ejb_project_rest.cane_sequence
+ALTER SEQUENCE public.cane_sequence
     OWNER TO postgres;

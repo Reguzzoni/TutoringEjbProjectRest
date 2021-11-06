@@ -3,13 +3,17 @@ package dao;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import model.Cane;
 
 @Stateless
 //requires_new
+@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 //prova con 1 o piu transazioni contemporane
 public class CaneDao implements Dao<Cane>{
 	//The name of the persistence unit as defined in the persistence.xml file. 
