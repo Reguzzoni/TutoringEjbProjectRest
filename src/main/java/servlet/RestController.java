@@ -6,21 +6,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import dao.CaneDao;
+import dao.GattoDao;
 import dao.PadroneDao;
-import dao.PadroneDaoMod;
 import model.Cane;
+import model.Gatto;
 import model.Padrone;
 
 
@@ -31,10 +30,13 @@ public class RestController {
 
 	@Inject
 	private PadroneDao padroneDao;
-
-	@Inject
-	private PadroneDaoMod padroneDaoMod;
 	
+	@Inject
+	private GattoDao gattoDao;
+	
+	@Inject
+	private CaneDao caneDao;
+
 	// --- http://localhost:8080/progettoejb/api/rest/all ---
 	// http protocollo
 	// 127.0.0.1 : dove risiede il mio server
@@ -57,12 +59,44 @@ public class RestController {
 	public List<Padrone> getEvryone() {
 		return padroneDao.getAll();
 	}
+	
+	// creare il metodo per ottenere TUTTI i gatti
+	@GET
+	@Produces(MediaType.APPLICATION_JSON) //formato di dato
+	@Path("allGatti") //variabile {}
+	public List<Gatto> getAllCats() {
+		return gattoDao.getAll();
+	}
 
+	// creare il metodo per ottenere TUTTI i cani
+	@GET
+	@Produces(MediaType.APPLICATION_JSON) //formato di dato
+	@Path("allCani") //variabile {}
+	public List<Cane> getAllDogs() {
+		return caneDao.getAll();
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON) //formato di dato
+	@Path("insertPadrone")
+	public String insertPadrone(
+			@QueryParam("nome") String nome, 
+			@QueryParam("cognome") String cognome,
+			@QueryParam("id") String id) {
+		padroneDao.save(
+				nome, 
+				cognome, 
+				Integer.parseInt(id));
+		return "Insert finished with success!";
+	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	@Path("insert")
-	public void insertPadrone(Padrone nuovoPadrone) {
+	public Padrone insertPadrone(Padrone nuovoPadrone) {
 		padroneDao.save(nuovoPadrone);
+		return nuovoPadrone;
 	}
 
 	@GET
@@ -95,18 +129,4 @@ public class RestController {
 		return padroniList;
 	}
 	
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("insertCMT")
-	public void containedPadrone(Padrone padrone, Cane cane) 
-			throws 
-			IllegalStateException, SecurityException, 
-			SystemException, RollbackException, 
-			HeuristicMixedException, HeuristicRollbackException 
-	{
-		padroneDaoMod.save(padrone, cane);
-
-	}
-
-
 }

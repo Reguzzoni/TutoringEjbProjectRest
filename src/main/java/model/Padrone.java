@@ -31,7 +31,7 @@ public class Padrone implements Serializable{
 	
 	@Id
 	@Column(name = "padrone_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
 	@Column(name = "nome")
@@ -40,12 +40,12 @@ public class Padrone implements Serializable{
 	@Column(name = "cognome")
 	private String cognome;
 	
-	@OneToMany(fetch = FetchType.LAZY,  mappedBy="padrone") //nome che mappa l'entita'
+	/*@OneToMany(fetch = FetchType.LAZY,  mappedBy="padrone") //nome che mappa l'entita'
 	@Transient
-	private List<Cane> cani;
+	private List<Cane> cani;*/
 	
-	@ManyToMany (mappedBy = "padroneOfGatto")
-	private Set<Gatto> gatto; //to insert in postgres
+	/*@ManyToMany (mappedBy = "padroneOfGatto")
+	private Set<Gatto> gatto; //to insert in postgres*/
 
 	public int getId() {
 		return id;

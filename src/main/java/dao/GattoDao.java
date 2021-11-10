@@ -3,12 +3,13 @@ package dao;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import model.Gatto;
 
-@Stateless
+@Model
 public class GattoDao implements Dao<Gatto> {
 	
 	@PersistenceContext(unitName = "persistenceUnit1")

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.enterprise.inject.Model;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -12,7 +13,7 @@ import javax.transaction.Transactional;
 import model.Cane;
 import model.CaneIdClass;
 
-@Stateless
+@Model
 //requires_new
 @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 //prova con 1 o piu transazioni contemporane
