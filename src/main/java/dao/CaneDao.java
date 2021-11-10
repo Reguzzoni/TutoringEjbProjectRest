@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import model.Cane;
+import model.CaneIdClass;
 
 @Stateless
 //requires_new
@@ -20,15 +21,11 @@ public class CaneDao implements Dao<Cane>{
 	//If the unitName element is specified, the persistence unit for the entity manager that is accessible in JNDI must have the same name.
 	@PersistenceContext(unitName = "persistenceUnit1")
 	private EntityManager em;
-	
-//	public Cane getById(int caneId) {
-//	return em.find(Cane.class, caneId);
-//	}
 
 	@Override
-	public Cane get(int id) {
-		// TODO Auto-generated method stub
-		return em.find(Cane.class, id);
+	public Cane get(int id) {		
+		Cane caneVar = em.find(Cane.class, id);
+		return caneVar;
 	}
 
 	@Override

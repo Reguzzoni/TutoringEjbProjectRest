@@ -16,7 +16,6 @@ public class GattoDao implements Dao<Gatto> {
 
 	@Override
 	public Gatto get(int id) {
-		// TODO Auto-generated method stub
 		return em.find(Gatto.class, id);
 	}
 

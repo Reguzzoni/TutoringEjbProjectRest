@@ -34,7 +34,16 @@ public class RestController {
 
 	@Inject
 	private PadroneDaoMod padroneDaoMod;
-	//
+	
+	// --- http://localhost:8080/progettoejb/api/rest/all ---
+	// http protocollo
+	// 127.0.0.1 : dove risiede il mio server
+	// 8080 porta default di esposizione protocollo application server
+	// progettoEjb = nome progetto definito in maven
+	// api = servlet
+	// rest = ejb contenitore di servizi esposti
+	// all = il nome del metodo
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON) //formato di dato
 	@Path("{id}") //variabile {}

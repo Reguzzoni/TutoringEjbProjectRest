@@ -25,6 +25,7 @@ public class Cane implements Serializable{ //
 	// (2) Look for "Persistent class management" and select the option "Discover annotated classes automatically"; 
 	//(3) Press "Apply".
 
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -53,5 +54,11 @@ public class Cane implements Serializable{ //
 	}
 	public void setRazza(String razza) {
 		this.razza = razza;
+	}
+	public Padrone getPadrone() {
+		return padrone;
+	}
+	public void setPadrone(Padrone padrone) {
+		this.padrone = padrone;
 	}
 }

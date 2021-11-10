@@ -15,9 +15,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "padrone")
+
 @NamedQueries({
 	@NamedQuery(
 		    name="findAllOwners",
@@ -32,6 +34,19 @@ public class Padrone implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	@Column(name = "nome")
+	private String nome;
+	
+	@Column(name = "cognome")
+	private String cognome;
+	
+	@OneToMany(fetch = FetchType.LAZY,  mappedBy="padrone") //nome che mappa l'entita'
+	@Transient
+	private List<Cane> cani;
+	
+	@ManyToMany (mappedBy = "padroneOfGatto")
+	private Set<Gatto> gatto; //to insert in postgres
+
 	public int getId() {
 		return id;
 	}
@@ -40,18 +55,6 @@ public class Padrone implements Serializable{
 		this.id = id;
 	}
 	
-	@Column(name = "nome")
-	private String nome;
-	
-	@Column(name = "cognome")
-	private String cognome;
-	
-	@OneToMany(fetch = FetchType.LAZY,  mappedBy="padrone") //nome che mappa l'entita'
-	private List<Cane> cani;
-	
-	@ManyToMany (mappedBy = "padroneOfGatto")
-	private Set<Gatto> gatto; //to insert in postgres
-
 	public String getCognome() {
 		return cognome;
 	}
