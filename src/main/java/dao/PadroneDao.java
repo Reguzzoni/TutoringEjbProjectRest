@@ -20,7 +20,14 @@ public class PadroneDao /*implements Dao<Padrone>*/ {
 
 	//	@Override
 	public List<Padrone> getAll() {
-		return em.createNamedQuery("findAllOwners", Padrone.class)
+		return em.createNamedQuery(Padrone.NAMED_QUERY_ALL, Padrone.class)
+				.getResultList();
+	}
+	
+//	@Override
+	public List<Padrone> getPadroneByNome(String nomeInput) {
+		return em.createNamedQuery(Padrone.NAMED_QUERY_PER_RICERCA_BY_NOME, Padrone.class)
+				.setParameter(Padrone.PARAM_QUERY_NOME, nomeInput)
 				.getResultList();
 	}
 

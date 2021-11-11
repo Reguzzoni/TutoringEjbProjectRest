@@ -1,33 +1,39 @@
 package model;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "padrone")
 
 @NamedQueries({
 	@NamedQuery(
-		    name="findAllOwners",
+		    name=Padrone.NAMED_QUERY_ALL,
 		    query="SELECT p FROM Padrone p"
 		), //HQL >> for hibernate
+	@NamedQuery(
+		    name=Padrone.NAMED_QUERY_PER_RICERCA_BY_NOME,
+		    query="SELECT p FROM Padrone p where p.nome = :"+Padrone.PARAM_QUERY_NOME
+		), //HQL >> for hibernate
 })
+@JsonIgnoreProperties(value = { "cognome" })
 public class Padrone implements Serializable{
 	private static final long serialVersionUID = 1L;
+
+	// named query listed
+	public final static String NAMED_QUERY_ALL = "findAllOwners";
+	public final static String NAMED_QUERY_PER_RICERCA_BY_NOME = "findOwnerByName";
+	
+	// parameters query listed
+	public final static String PARAM_QUERY_NOME = "nome";
 	
 	@Id
 	@Column(name = "padrone_id")
